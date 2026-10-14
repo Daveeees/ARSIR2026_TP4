@@ -9,8 +9,8 @@ public class ClientPOP {
 
     private static final String SERVEUR = "localhost";
     private static final int PORT = 110;
-    private static final String UTILISATEUR = "alice@test.local"; // adresse complète sur hMailServer
-    private static final String MOT_DE_PASSE = "motdepasse";
+    private static final String UTILISATEUR = "asterix";
+    private static final String MOT_DE_PASSE = "123";
 
     private static BufferedReader entree;
     private static PrintWriter sortie;
@@ -40,6 +40,8 @@ public class ClientPOP {
                 while (!(ligne = entree.readLine()).equals(".")) { // un point seul termine le message
                     System.out.println(ligne);
                 }
+                // suppression du message lu
+                envoyer("DELE " + i);
             }
 
             envoyer("QUIT");
